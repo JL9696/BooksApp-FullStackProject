@@ -32,6 +32,7 @@ model Order {
   id        String  @id @default(uuid())
   user      User? @relation(fields: [userId], references: [id], onDelete: SetNull)
   userId    String?
+  
   products ProductOrders[]
 }
 
