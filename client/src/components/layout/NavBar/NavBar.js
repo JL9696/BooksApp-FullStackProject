@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    <Navbar>
+    <Navbar bg="secondary" variant="dark" className="mt-2 mb-2 rounded">
       <div className="container">
         <Navbar.Brand href="/">BooksShop</Navbar.Brand>
-        <Nav>
+        <Nav className="me-auto row justify-content-end">
           <Nav.Link as={NavLink} to="/">
             Home
           </Nav.Link>

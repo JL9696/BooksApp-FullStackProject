@@ -4,7 +4,7 @@ import styles from './Main.module.scss';
 
 const Main = ({ children }) => {
   return (
-    <div>
+    <div className='main'>
       <Header />
       {children}
       <Footer />
