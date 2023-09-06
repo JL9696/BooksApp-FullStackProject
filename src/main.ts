@@ -11,7 +11,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.useGlobalInterceptors(new LoggerInterceptor());
   app.setGlobalPrefix('api');
-  app.use('/images', serveStatic('../public/images', { index: false }));
+  //app.use('/images', serveStatic('../public/images', { index: false }));
 
   const prismaService = app.get(PrismaService);
   await prismaService.enableShutdownHooks(app);

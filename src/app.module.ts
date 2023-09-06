@@ -15,7 +15,7 @@ import { join } from 'path';
 
 @Module({
   imports: [PrismaModule, ProductsModule, OrdersModule,  ServeStaticModule.forRoot({
-    rootPath: join(__dirname, '..', 'public'),
+    rootPath: join(__dirname, '../../', 'client', 'build'),
   }),
 ],
   controllers: [AppController],
