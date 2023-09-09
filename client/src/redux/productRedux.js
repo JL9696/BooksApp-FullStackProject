@@ -23,7 +23,7 @@ export const loadProductById = (payload) => ({
 export const loadProductsRequest = () => {
   return async (dispatch) => {
     dispatch(startRequest({ name: 'LOAD_PRODUCTS' }));
-    await fetch(`${API_URL}/api/products`)
+    await fetch(`${API_URL}/products`)
       .then((res) => res.json())
       .then((res) => {
         dispatch(loadProducts(res));

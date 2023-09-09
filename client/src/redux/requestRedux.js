@@ -13,6 +13,8 @@ const END_REQUEST = createActionName('END_REQUEST');
 export const startRequest = (payload) => ({ payload, type: START_REQUEST });
 export const endRequest = (payload) => ({ payload, type: END_REQUEST });
 
+/* THUNKS */
+
 /* INITIAL STATE */
 
 const initialState = {};

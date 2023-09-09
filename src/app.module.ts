@@ -14,10 +14,14 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
 @Module({
-  imports: [PrismaModule, ProductsModule, OrdersModule,  ServeStaticModule.forRoot({
-    rootPath: join(__dirname, '../../', 'client', 'build'),
-  }),
-],
+  imports: [
+    PrismaModule,
+    ProductsModule,
+    OrdersModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../../', 'client', 'build'),
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
