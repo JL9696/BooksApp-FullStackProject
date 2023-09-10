@@ -1,6 +1,6 @@
 /* SELECTORS */
 
-export const getRequest = ({ requests }, name) => requests[name];
+//export const getRequest = ({ requests }, name) => requests[name];
 
 /* ACTIONS */
 const createActionName = (actionName) => `app/request/${actionName}`;

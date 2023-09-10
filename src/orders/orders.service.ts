@@ -8,7 +8,7 @@ export class OrdersService {
 
   public getAll(): Promise<Order[]> {
     return this.prismaService.order.findMany({
-      include: { products: true},
+      include: { products: true },
     });
   }
 
