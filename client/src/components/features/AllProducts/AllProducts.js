@@ -5,15 +5,15 @@ const AllProducts = ({ id, name, price, images }) => {
   return (
     <>
       <div
-        className="card col-12 col-sm-4 p-1 border border-secondary"
-        style={{ height: '300px' }}
+        className="card col-8 col-sm-2 p-1 border border-secondary"
+        style={{ height: '350px' }}
       >
-        <div className="card-body overflow-hidden" style={{ height: '100px' }}>
+        <div className="card-body overflow-hidden" style={{ height: '130px' }}>
           <img
             src={images[0].url}
             alt="product"
             className="card-img-top"
-            style={{ height: '150%', objectFit: 'contain' }}
+            style={{ height: '180%', objectFit: 'contain' }}
           />
         </div>
         <div className="card-body">
