@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { addProductToOrder, getOrders } from '../../../redux/orderRedux';
 import { useForm } from 'react-hook-form';
 import { PRODUCT_MAX_ORDER, PRODUCT_MIN_ORDER } from '../../../config';
+import store from '../../../redux/store';
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const SingleProductPage = () => {
     dispatch(loadProductByIdRequest(id));
   }, [dispatch, id]);
 
-  const handleAddToCart = (e) => {
+ const handleAddToCart = (e) => {
     e.preventDefault();
 
     if (orders?.products?.find((product) => product.productId === id)) {
@@ -41,8 +42,21 @@ const SingleProductPage = () => {
           details: '',
         }),
       );
+
+      const state = store.getState();
+      localStorage.setItem(
+        'cartProducts',
+        JSON.stringify(state.orders.products),
+      );
     }
   };
+
+
+  const state = store.getState();
+  localStorage.setItem(
+    'cartProducts',
+    JSON.stringify(state.orders.products),
+  );
 
   return (
     <>
@@ -74,6 +88,7 @@ const SingleProductPage = () => {
                   alt="product"
                   style={{
                     height: '100%',
+                    padding: '5px',
                   }}
                 />
               </div>
@@ -84,6 +99,7 @@ const SingleProductPage = () => {
                   alt="product"
                   style={{
                     height: '100%',
+                    padding: '5px',
                   }}
                 />
               </div>
@@ -94,6 +110,7 @@ const SingleProductPage = () => {
                   alt="product"
                   style={{
                     height: '100%',
+                    padding: '5px',
                   }}
                 />
               </div>
@@ -102,7 +119,7 @@ const SingleProductPage = () => {
           <div className="col-12 mt-2 row justify-content-end">
             <form
               className="col-12 mt-4 row justify-content-center"
-              onSubmit={validate(handleAddToCart)}
+              onSubmit={handleAddToCart}
             >
               <div className="mr-2">
                 Amount:

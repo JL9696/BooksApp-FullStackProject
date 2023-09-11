@@ -65,6 +65,7 @@ export const postOrderRequest = (order) => {
 
 /* INITIAL STATE */
 
+
 const initialState = localStorage.getItem('cartProducts')
   ? { products: JSON.parse(localStorage.getItem('cartProducts')) }
   : { products: [] };
