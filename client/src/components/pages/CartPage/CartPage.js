@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getOrdersProduct } from '../../../redux/orderRedux';
 import CartSum from '../../features/CartSum/CartSum';
+import CartTotalCost from '../../features/CartTotalCost/CartTotalCost';
 
 const CartPage = () => {
   const products = useSelector(getOrdersProduct);
@@ -16,15 +17,12 @@ const CartPage = () => {
           <h2> Your cart:</h2>
           {products.map((product) => {
             return (
-              <CartSum
-                editable={true}
-                key={product.productId}
-                {...product}
-              ></CartSum>
+              <CartSum editable={true} key={product.productId} {...product} ></CartSum>
             );
           })}
         </div>
 
+        <CartTotalCost></CartTotalCost>
         <NavLink to="/">
           <Button className='btn btn-secondary mr-2'>Get back to shopping</Button>
         </NavLink>
