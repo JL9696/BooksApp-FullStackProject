@@ -1,12 +1,12 @@
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductById, loadProductByIdRequest} from '../../../redux/productRedux';
+import { getProductById, loadProductByIdRequest } from '../../../redux/productRedux';
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
 import { addProductToOrder, getOrders } from '../../../redux/orderRedux';
 import { useForm } from 'react-hook-form';
-import { PRODUCT_MAX_ORDER, PRODUCT_MIN_ORDER } from '../../../config';
 import store from '../../../redux/store';
+import AmountInput from '../../features/AmountInput/AmountInput';
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -25,7 +25,7 @@ const SingleProductPage = () => {
     dispatch(loadProductByIdRequest(id));
   }, [dispatch, id]);
 
- const handleAddToCart = (e) => {
+  const handleAddToCart = (e) => {
     e.preventDefault();
 
     if (orders?.products?.find((product) => product.productId === id)) {
@@ -34,13 +34,7 @@ const SingleProductPage = () => {
       );
     } else {
       dispatch(
-        addProductToOrder({
-          name: product.name,
-          price: product.price,
-          orderedAmount: Number(productAmount),
-          productId: id,
-          details: '',
-        }),
+        addProductToOrder({ name: product.name, price: product.price, orderedAmount: Number(productAmount), productId: id, details: '' }),
       );
 
       const state = store.getState();
@@ -63,10 +57,7 @@ const SingleProductPage = () => {
       <div className="mt-5 container">
         <div className="row mt-5">
           <div className="col-12 col-lg-5 mt-3 text-center">
-            <img
-              src={product?.images[0].url}
-              className="img-fluid"
-              alt="product"
+            <img src={product?.images[0].url} className="img-fluid" alt="product"
               style={{
                 height: '100%',
                 maxHeight: '600px',
@@ -82,10 +73,7 @@ const SingleProductPage = () => {
             <p className="text-justify">{product?.description}</p>
             <div className="row no-gutters col-12 justify-content-between align-items-end ">
               <div className="col-12 col-sm-4 mb-1">
-                <img
-                  src={product?.images[1]?.url}
-                  className="img-fluid"
-                  alt="product"
+                <img src={product?.images[1]?.url} className="img-fluid" alt="product"
                   style={{
                     height: '100%',
                     padding: '5px',
@@ -93,10 +81,7 @@ const SingleProductPage = () => {
                 />
               </div>
               <div className="col-12 col-sm-4 mb-1">
-                <img
-                  src={product?.images[2]?.url}
-                  className="img-fluid"
-                  alt="product"
+                <img src={product?.images[2]?.url} className="img-fluid" alt="product"
                   style={{
                     height: '100%',
                     padding: '5px',
@@ -104,10 +89,7 @@ const SingleProductPage = () => {
                 />
               </div>
               <div className="col-12 col-sm-4 mb-1">
-                <img
-                  src={product?.images[3]?.url}
-                  className="img-fluid"
-                  alt="product"
+                <img src={product?.images[3]?.url} className="img-fluid" alt="product"
                   style={{
                     height: '100%',
                     padding: '5px',
@@ -117,37 +99,9 @@ const SingleProductPage = () => {
             </div>
           </div>
           <div className="col-12 mt-2 row justify-content-end">
-            <form
-              className="col-12 mt-4 row justify-content-center"
-              onSubmit={handleAddToCart}
-            >
+            <form className="col-12 mt-4 row justify-content-center" onSubmit={handleAddToCart} >
               <div className="mr-2">
-                Amount:
-                <input
-                  {...register('amount', {
-                    required: 'You must specify the amount you want to order',
-                    min: {
-                      value: PRODUCT_MIN_ORDER,
-                      message: `You must add at least ${PRODUCT_MIN_ORDER} product`,
-                    },
-                    max: {
-                      value: PRODUCT_MAX_ORDER,
-                      message: `You can't order more than ${PRODUCT_MAX_ORDER} products`,
-                    },
-                    pattern: {
-                      value: /^[0-9]*$/,
-                      message: 'The amount must be an integer',
-                    },
-                  })}
-                  value={productAmount}
-                  onChange={(e) => setPrdouctAmount(e.target.value)}
-                  type="number"
-                ></input>
-                {errors.amount && (
-                  <span className="d-block form-text text-danger mt-2">
-                    {errors.amount.message}
-                  </span>
-                )}
+                <AmountInput editable={true} value={productAmount} onChangeFunc={setPrdouctAmount} ></AmountInput>
               </div>
               <div>
                 <Button type="submit" variant="outline-success">
