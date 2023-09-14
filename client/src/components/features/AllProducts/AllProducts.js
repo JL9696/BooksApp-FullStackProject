@@ -22,7 +22,7 @@ const AllProducts = ({ id, name, price, images }) => {
             <p className="card-text mb-2">Price: {price}</p>
           </div>
           <Link to={`product/${id}`}>
-            <Button className="col-12 card-text btn btn-secondary">Read More</Button>
+            <Button className="col-12 card-text btn btn-secondary m-2">Read More</Button>
           </Link>
         </div>
       </div>

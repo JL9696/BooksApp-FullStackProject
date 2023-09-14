@@ -1,9 +1,7 @@
-import styles from './Footer.module.scss';
-
 const Footer = () => {
   return (
     <div>
-        <h4>CopyrightⓒJoanna Lew 2023</h4>
+        <h5 className='text-center mt-3'>CopyrightⓒJoanna Lew 2023</h5>
     </div>
   )
 };

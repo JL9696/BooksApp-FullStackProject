@@ -7,6 +7,8 @@ import Cart from './components/pages/CartPage/CartPage';
 import Summary from './components/pages/Summary/Summary';
 import Container from 'react-bootstrap/Container';
 
+import './styles/global.scss';
+
 function App() {
   return (
     <Container>

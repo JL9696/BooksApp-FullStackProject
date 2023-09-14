@@ -127,10 +127,7 @@ const Summary = () => {
                   message: `The phone cannot be longer than ${PHONE_MAX_LENGTH} characters`,
                 },
               })}
-              id="phone"
-              type="text"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              id="phone" type="text" value={phone} onChange={(e) => setPhone(e.target.value)}
             ></input>
             {errors.phone && (
               <span className="d-block form-text text-danger mt-2">
