@@ -72,7 +72,7 @@ const SingleProductPage = () => {
         <div className="mt-5 container">
           <div className="row mt-5">
             <div className="col-12 col-lg-5 mt-3 text-center">
-              <img src={product?.images[0].url} className="img-fluid" alt="product"
+              <img src={product?.images[0]?.url} className="img-fluid" alt="product"
                 style={{ height: '100%', maxHeight: '400px',  objectFit: 'cover'}} />
             </div>
             <div className="col-12 col-lg-7 mt-3">
